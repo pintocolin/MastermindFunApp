@@ -1,0 +1,36 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterMindFunApp", "MasterMindFunApp.csproj", "{3B75B549-D489-96E0-D7D2-8B3A17683C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mastermind.Core", "Mastermind.core\Mastermind.Core.csproj", "{E9E42340-8296-B22C-F9A2-FA82D43C0F67}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B75B549-D489-96E0-D7D2-8B3A17683C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B75B549-D489-96E0-D7D2-8B3A17683C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B75B549-D489-96E0-D7D2-8B3A17683C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B75B549-D489-96E0-D7D2-8B3A17683C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBFA08EA-AECE-205F-7B85-326FD0B81BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E42340-8296-B22C-F9A2-FA82D43C0F67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E42340-8296-B22C-F9A2-FA82D43C0F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E42340-8296-B22C-F9A2-FA82D43C0F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E42340-8296-B22C-F9A2-FA82D43C0F67}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {750CC11E-32B0-4262-BAAD-4108769C965E}
+	EndGlobalSection
+EndGlobal
