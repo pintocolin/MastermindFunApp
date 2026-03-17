@@ -15,6 +15,7 @@ function App() {
     const mockHint= '++--';
     setHistory([...history, {guesses: guess, hints: mockHint}]);
     setGuess('');
+    setMessage('---'); // Placeholder for feedback message from backend
   };
   return(
 
