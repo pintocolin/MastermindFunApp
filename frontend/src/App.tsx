@@ -1,48 +1,61 @@
-import { useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { GuessInput } from './components/GuessInput'
+import { HistoryList } from './components/HistoryList'
 import { type GameStep } from './types'
+import './App.css'
+
 
 function App() {
+  const [secret, setSecret] = useState<string>(''); // This will be set by the backend in a real implementation 
   const [guess,setGuess] = useState<string>('');
   const [history, setHistory] = useState<GameStep[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   const [message, setMessage] = useState<string>('Enter 4 digits (1-6)');
+
+  // initialize game 
+  useEffect(() => {
+      // Initialize the game by fetch the secret from the backend
+      fetch('/api/StartGame')
+        .then(response => response.json())
+        .then(data => {
+          setSecret(data.secret);
+          setLoading(false);
+          setMessage("Enter 4 digits (1-6)");
+        });
+  }, [])
 
   const handleGuesses = async () => {
     // This will connect to the Azure Function 
-    console.log('Guess submitted:', guess);
+    const response = await fetch('/api/GetHint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ secret, guess })
+    });
 
-    // Temp local mock for testing the UI without backend
-    const mockHint= '++--';
-    setHistory([...history, {guesses: guess, hints: mockHint}]);
+    const data = await response.json();
+    console.log('Guess submitted:', data);
+
+    // add new guess ti the top of the history list
+    setHistory([{guesses: guess, hints: data.hints}, ...history]);
     setGuess('');
-    setMessage('---'); // Placeholder for feedback message from backend
   };
+
   return(
 
     <div className ="container">
       <h1>Mastermind Cloud</h1>
-      <p>{message}</p>
-      <div className="input-section">
-        <input 
-          type="text"
-          value={guess}
-          onChange={(e) => setGuess(e.target.value)}
-          maxLength={4}
-          placeholder="Enter your guess"
-        />
-        <button onClick={handleGuesses}>Submit Guess</button>
-      </div>
+      <p className="status">{message}</p>
 
-      <p className="status-msg">{message}</p>
-      <div className ="history-list">
-        {history.map((step, index) => (
-          <div key={index} className="history-item">
-            <span className="guess">{step.guesses}</span>
-            <span className="hint">{step.hints}</span>
-          </div>
-        ))} 
-      </div>
-
+      <GuessInput
+        guess={guess}
+        setGuess={setGuess}
+        onSubmit={handleGuesses}
+        disabled={loading}
+      />
+      <hr />
+      <HistoryList history={history} />
     </div>
   )
 } 

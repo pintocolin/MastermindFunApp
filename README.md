@@ -42,3 +42,32 @@ MastermindFunApp/
 ├── frontend/           # React + TypeScript (Vite SPA)
 ├── Mastermind.Core/    # Shared Business Logic (Game Engine)
 └── .github/workflows/  # CI/CD (GitHub Actions)
+
+
+
+
+## 🧪 Testing Strategy
+
+A robust testing suite ensures the reliability of the Mastermind logic and the stability of the Cloud-Native deployment.
+
+### 1. Unit Testing (xUnit)
+* **Scope:** Business logic within `Mastermind.Core`.
+* **Focus:** Validating the scoring algorithm (Exact matches vs. Partial matches) across edge cases (duplicates, empty guesses, etc.).
+* **Execution:** `dotnet test`
+
+### 2. End-to-End & Integration Testing (Playwright)
+* **Scope:** Full-stack "User Flow" from the React UI to the Azure Function API.
+* **Focus:** Simulating real user behavior—entering guesses, verifying UI feedback, and ensuring the API bridge is functional.
+* **Tooling:** **Playwright** for cross-browser testing (Chromium, Firefox, WebKit).
+
+---
+
+## 💻 Local Development
+
+To run the full-stack environment locally, you will need the [.NET 10 SDK](https://dotnet.microsoft.com/download) and [Node.js](https://nodejs.org/).
+
+### 1. Backend (Azure Functions)
+```bash
+cd api
+func start
+
